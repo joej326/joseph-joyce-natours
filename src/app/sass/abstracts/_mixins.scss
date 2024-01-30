@@ -32,6 +32,17 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 1em = 16px
 */
+
+// we use the @content flag to inject blocks of code into the mixin. (see _base.scss)
+// in this case, by "block" of code I mean we're just passing one line for the font-size.
+// "em" and "rem" are not affected by the root html font-size when they are in media queries.
+// best practice is to use "em" for breakpoints b/c rem has been found to not work in some browsers.
+// em = 16px so whatever pixel breakpoint you want just divide by 16 i.e. 800px / 16 = 50em.
+// since we're using "em", now the breakpoints will respond to the user's font-size they set in the browser.
+
+// the beauty of doing media queries this way, is that this is the only file we'll declare media queries in.
+// anywhere in the css we want to use these breakpoints, i.e. for tablets
+// we just use @include respond(tab-land) { css changes }
 @mixin respond($breakpoint) {
     @if $breakpoint == phone {
         @media only screen and (max-width: 37.5em) { @content };    //600px
