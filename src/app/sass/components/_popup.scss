@@ -10,8 +10,7 @@
     visibility: hidden;
     transition: all .3s;
 
-    // pass properties in as an argument that you want to use IF they are supported, 
-    // otherwise, use the porperties in the curly braces.
+    // only use the porperties in the curly braces if the arguments are supported.
     @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
         -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
