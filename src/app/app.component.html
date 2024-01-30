@@ -77,6 +77,13 @@
                     <div class="col-1-of-2">
                         <div class="composition">
 
+                            <!-- srcset we're using "300w" and "1000w" respectively. This is the actual image width in pixels. -->
+                            <!-- The browser will figure out which of the 2 to use based on the sizes we provide it. -->
+
+                            <!-- how did we get the "sizes" i.e. 20vw? We inspected the image pixel width on the page and
+                            divided it by the the current screen resolution. e.g 171px img / 900px screen = 19%(19vw ≈ 20vw).
+                            So the first 2 arguments specify breakpoints and image width, and the 3rd argument is the 
+                            width if the previous conditions aren't met. -->
                             <img srcset="assets/img/nat-1.jpg 300w, assets/img/nat-1-large.jpg 1000w"
                                  sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
                                  alt="Photo 1"
@@ -357,7 +364,17 @@
         <footer class="footer">
             <div class="footer__logo-box">
 
+                <!-- note that you can just use img without the picture element.
+                All this will do is have the browser use one image if it detects a 1x screen, and another for 2x screens.
+                By using the picture element we can use the source elements "media" attr to specify media queries for 1x & 2x -->
                 <picture class="footer__logo">
+                    <!-- srcset takes first the img you want to use, and second an argument of "1x" or "2x".
+                    This tells HMTL to use one image for 1x pixel (low res) screens and the other image for 2 pixel (high res) -->
+
+                    <!-- "media" attribute takes a media query. We just copied the measurement for "phone" from the media query in _mixins.scss -->
+
+                    <!-- how this works is: if the screen is smaller than 37.5em use 1x or 2x image, 
+                    and if the screen is bigger than 37.5em then use the img element's srset 1x or 2x. -->
                     <source srcset="assets/img/logo-green-small-1x.png 1x, assets/img/logo-green-small-2x.png 2x"
                             media="(max-width: 37.5em)">
                     <img srcset="assets/img/logo-green-1x.png 1x, assets/img/logo-green-2x.png 2x" alt="Full logo" src="assets/img/logo-green-2x.png">
