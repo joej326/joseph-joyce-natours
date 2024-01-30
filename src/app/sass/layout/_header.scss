@@ -17,6 +17,10 @@
     }
 
     // min-resolution: 192dpi because that's the resolution of the Apple retina screen.
+
+    //-webkit-min-device-pixel-ratio: 2 to target safari on Apple's 2x pixel devices.
+
+    // best practice is to use "only screen and" on all media queries.
     @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em),
             only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
             only screen and (min-width: 125em) {
